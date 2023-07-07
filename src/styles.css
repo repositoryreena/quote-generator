@@ -1,0 +1,35 @@
+* {
+    font-family: Arial;
+    background-color: red;
+  }
+  button {
+    background-color: lightgray;
+  }
+  h1 {
+    text-align: center;
+  }
+  .container {
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .inside {
+    width: 40%;
+    border: 2px solid black;
+    margin: 100px;
+    padding: 20px;
+    background-color: white;
+  }
+  .white {
+    background-color: white;
+  }
+  h2 {
+    background-color: white;
+  }
+  p {
+    background-color: white;
+  }
+  
