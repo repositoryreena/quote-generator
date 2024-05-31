@@ -35,6 +35,7 @@ function QuoteGenerator() {
     "The truth is I've never fooled anyone. I've let men sometimes fool themselves.",
     "I've always felt toward the slightest scene, even if all I had to do in a scene was just to come in and say, 'Hi,' that the people ought to get their money's worth and that this is an obligation of mine, to give them the best you can get from me.",
     "When you're young and healthy you can plan on Monday to commit suicide, and by Wednesday you're laughing again.",
+    "Boys are meant to ruin your lipstick not mascara.",
   ];
   
 
