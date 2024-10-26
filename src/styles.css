@@ -7,6 +7,8 @@
 
 button {
   background-color: lightgray;
+  margin-top: 20px; /* Added margin to space it from other elements */
+  padding: 10px 20px; /* Added padding for better button size */
 }
 
 h1 {
@@ -51,5 +53,17 @@ h2, p {
   .inside {
       width: 40%; /* Further increase width on very large screens */
       margin: 100px auto; /* Centered margin */
+  }
+}
+
+/* Additional Styles for Smaller Screens */
+@media (max-width: 480px) {
+  button {
+      width: 100%; /* Make button full width on small screens */
+  }
+
+  .inside {
+      margin: 10px; /* Reduce margin on small screens */
+      padding: 15px; /* Adjust padding for smaller viewports */
   }
 }
