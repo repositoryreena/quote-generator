@@ -1,6 +1,7 @@
 import React from "react";
 import QuoteGenerator from "./QuoteGenerator";
 import "./styles.css";
+
 const App = () => {
   return (
     <div>

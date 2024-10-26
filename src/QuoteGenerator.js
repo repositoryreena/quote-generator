@@ -3,6 +3,7 @@ import "./styles.css";
 
 function QuoteGenerator() {
   const [quote, setQuote] = useState(null);
+  const [image, setImage] = useState(null); // State to store the image URL
 
   const marilynQuotes = [
     "Imperfection is beauty, madness is genius, and it's better to be absolutely ridiculous than absolutely boring.",
@@ -36,13 +37,55 @@ function QuoteGenerator() {
     "I've always felt toward the slightest scene, even if all I had to do in a scene was just to come in and say, 'Hi,' that the people ought to get their money's worth and that this is an obligation of mine, to give them the best you can get from me.",
     "When you're young and healthy you can plan on Monday to commit suicide, and by Wednesday you're laughing again.",
     "Boys are meant to ruin your lipstick not mascara.",
-    "To all the girls that think you're fat because you're not a size zero, you're the beautiful one, its society who's ugly.",
+    "To all the girls that think you're fat because you're not a size zero, you're the beautiful one, it's society who's ugly.",
   ];
-  
 
   const getRandomQuote = () => {
     const randomIndex = Math.floor(Math.random() * marilynQuotes.length);
     setQuote(marilynQuotes[randomIndex]);
+    fetchImage(); // Fetch a new image when a new quote is generated
+  };
+
+  const fetchImage = async () => {
+    try {
+      const response = await fetch(
+        "https://commons.wikimedia.org/w/api.php?action=query&list=search&srsearch=Marilyn%20Monroe&format=json&origin=*"
+      );
+      const data = await response.json();
+
+      const imagePromises = data.query.search.map(async (result) => {
+        const pageId = result.pageid;
+
+        // Fetch images from each page
+        const imageResponse = await fetch(
+          `https://commons.wikimedia.org/w/api.php?action=query&prop=images&pageids=${pageId}&format=json&origin=*`
+        );
+        const imageData = await imageResponse.json();
+        return imageData.query.pages[pageId].images;
+      });
+
+      const imagesArray = await Promise.all(imagePromises);
+      const allImages = imagesArray.flat(); // Flatten the array
+
+      // Filter for images that likely belong to Marilyn Monroe
+      const filteredImages = allImages.filter((img) =>
+        img.title.toLowerCase().includes("marilyn monroe")
+      );
+
+      if (filteredImages.length > 0) {
+        // Select a random image from the filtered images
+        const randomImageIndex = Math.floor(Math.random() * filteredImages.length);
+        const imageName = filteredImages[randomImageIndex].title; // Get a random image title
+        const imageUrl = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(imageName)}`;
+        setImage(imageUrl); // Set the image URL
+      } else {
+        // Fallback to a default image if none are found
+        setImage("default-image-url-here"); // Add a default image URL
+      }
+    } catch (error) {
+      console.error("Error fetching image:", error);
+      setImage(null); // Reset image on error
+    }
   };
 
   return (
@@ -55,6 +98,7 @@ function QuoteGenerator() {
             <p>- Marilyn Monroe</p>
           </div>
         )}
+        {image && <img src={image} alt="Marilyn Monroe" />} {/* Display the image */}
       </div>
     </div>
   );
