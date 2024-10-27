@@ -5,8 +5,8 @@ import "./styles.css";
 const App = () => {
   return (
     <div>
-      <h1>Project 3: Quote Generator</h1>
-      <QuoteGenerator />
+      <QuoteGenerator /> {/* QuoteGenerator will include the button below this header */}
+      
     </div>
   );
 };

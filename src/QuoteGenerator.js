@@ -89,19 +89,18 @@ function QuoteGenerator() {
   };
 
   return (
-    <div className="container">
-      <div className="inside">
-        <button onClick={getRandomQuote}>New Quote</button>
-        {quote && (
-          <div className="white">
-            <h2>{quote}</h2>
-            <p>- Marilyn Monroe</p>
-          </div>
-        )}
-        {image && <img src={image} alt="Marilyn Monroe" />} {/* Display the image */}
-      </div>
+    <div className="inside">
+      <button onClick={getRandomQuote} className="new-quote-button">New Quote</button>
+      {quote && (
+        <div className="white">
+          <h2>{quote}</h2>
+          <p>- Marilyn Monroe</p>
+        </div>
+      )}
+      {image && <img src={image} alt="Marilyn Monroe" />} {/* Display the image */}
     </div>
   );
+  
 }
 
 export default QuoteGenerator;

@@ -1,69 +1,8 @@
-* {
-  font-family: Arial, sans-serif;
+body { 
   background-color: red;
-  margin: 0;
-  padding: 0;
-}
-
-button {
-  background-color: lightgray;
-  margin-top: 20px; /* Added margin to space it from other elements */
-  padding: 10px 20px; /* Added padding for better button size */
-}
-
-h1 {
   text-align: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px; /* Added padding for better spacing */
-}
-
-.inside {
-  width: 90%; /* Use a percentage for responsiveness */
-  max-width: 600px; /* Limit max width */
-  border: 2px solid black;
-  margin: 20px; /* Adjusted margin for smaller screens */
-  padding: 20px;
-  background-color: white;
-}
-
-.white {
-  background-color: white;
-}
-
-h2, p {
-  background-color: white;
-}
-
-/* Media Queries */
-@media (min-width: 768px) {
-  .inside {
-      width: 60%; /* Increase width on larger screens */
-      margin: 50px auto; /* Centered margin */
-  }
-}
-
-@media (min-width: 1200px) {
-  .inside {
-      width: 40%; /* Further increase width on very large screens */
-      margin: 100px auto; /* Centered margin */
-  }
-}
-
-/* Additional Styles for Smaller Screens */
-@media (max-width: 480px) {
-  button {
-      width: 100%; /* Make button full width on small screens */
-  }
-
-  .inside {
-      margin: 10px; /* Reduce margin on small screens */
-      padding: 15px; /* Adjust padding for smaller viewports */
-  }
+img{
+  width: 50vw;
 }
